@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Environmental LMS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body class="dashboard-page">
+    <a href="#contentArea" class="visually-hidden-focusable skip-link">Skip to content</a>
+    <div class="container-fluid" role="main">
+        <div class="row g-0 min-vh-100">
+            <!-- Sidebar Navigation -->
+            <nav class="col-12 col-md-3 col-lg-2 sidebar bg-dark text-white p-3" role="navigation"
+                aria-label="Primary navigation">
+                <div class="sidebar-header mb-4 d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <div class="logo-circle-small me-2">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="sidebar-brand-text">
+                            <h5 class="mb-0">EcoLearn</h5>
+                            <small class="text-light">Soweto Secondary</small>
+                        </div>
+                    </div>
+                    <button id="sidebarCollapse" class="btn btn-link text-white p-0">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+
+                <ul class="nav flex-column nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" data-section="dashboard">
+                            <i class="fas fa-home"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="lessons">
+                            <i class="fas fa-book"></i> Lessons
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="quiz">
+                            <i class="fas fa-clipboard-check"></i> Quizzes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="assignments">
+                            <i class="fas fa-tasks"></i> Assignments
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="forum">
+                            <i class="fas fa-comments"></i> Forum
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="gamification">
+                            <i class="fas fa-trophy"></i> Achievements
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="profile">
+                            <i class="fas fa-user"></i> My Profile
+                        </a>
+                    </li>
+                    <li class="nav-item mt-3 border-top pt-3">
+                        <a class="nav-link text-danger" href="#" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-12 col-md-9 col-lg-10 p-3 p-md-4">
+                <!-- Header -->
+                <header class="header-section mb-4">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h2 id="pageTitle" class="fw-bold mb-1">Dashboard</h2>
+                            <p id="userGreeting" class="text-muted mb-0">Welcome back!</p>
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-outline-secondary btn-sm" id="toggleSidebar" style="display:none;">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Notification Area -->
+                <div id="notificationArea" aria-live="polite" role="status"></div>
+
+                <!-- Content Sections -->
+                <div id="contentArea">
+                    <!-- Dashboard Section -->
+                    <section id="dashboard-section" class="content-section">
+                        <div class="row g-3 mb-4">
+                            <!-- Stats Cards -->
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="stat-card bg-success text-white">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h6>Overall Progress</h6>
+                                        <p id="overallProgress" class="mb-0">0%</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="stat-card bg-info text-white">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h6>Total Points</h6>
+                                        <p id="totalPoints" class="mb-0">0</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="stat-card bg-warning text-white">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-medal"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h6>Current Level</h6>
+                                        <p id="currentLevel" class="mb-0">Novice</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="stat-card bg-primary text-white">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h6>Badges</h6>
+                                        <p id="badgeCount" class="mb-0">0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Daily Challenge -->
+                        <div class="card mb-4 border-start border-success border-3">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="fas fa-leaf text-success"></i> Today's Environmental Challenge
+                                </h5>
+                                <p id="dailyChallenge" class="card-text mb-2"></p>
+                                <button class="btn btn-sm btn-success" id="completeChallenge">
+                                    <i class="fas fa-check"></i> Mark as Complete
+                                </button>
+                                <span id="challengeStatus" class="ms-2 small text-muted"></span>
+                            </div>
+                        </div>
+
+                        <!-- Quick Links -->
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="card h-100 quick-link" data-section="lessons" role="button" tabindex="0"
+                                    aria-label="Continue Learning: Resume your lesson">
+                                    <div class="card-body text-center cursor-pointer">
+                                        <i class="fas fa-book fa-2x text-primary mb-2" aria-hidden="true"></i>
+                                        <h6>Continue Learning</h6>
+                                        <p class="small text-muted">Resume your lesson</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100 quick-link" data-section="quiz" role="button" tabindex="0"
+                                    aria-label="Take a Quiz: Test your knowledge">
+                                    <div class="card-body text-center cursor-pointer">
+                                        <i class="fas fa-clipboard-check fa-2x text-info mb-2" aria-hidden="true"></i>
+                                        <h6>Take a Quiz</h6>
+                                        <p class="small text-muted">Test your knowledge</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100 quick-link" data-section="forum" role="button" tabindex="0"
+                                    aria-label="Join Discussion: Connect with peers">
+                                    <div class="card-body text-center cursor-pointer">
+                                        <i class="fas fa-comments fa-2x text-success mb-2" aria-hidden="true"></i>
+                                        <h6>Join Discussion</h6>
+                                        <p class="small text-muted">Connect with peers</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100 quick-link" data-section="assignments" role="button" tabindex="0"
+                                    aria-label="Submit Assignment: Complete your task">
+                                    <div class="card-body text-center cursor-pointer">
+                                        <i class="fas fa-tasks fa-2x text-warning mb-2" aria-hidden="true"></i>
+                                        <h6>Submit Assignment</h6>
+                                        <p class="small text-muted">Complete your task</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Lessons Section -->
+                    <section id="lessons-section" class="content-section" style="display:none;">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div id="lessonsList"></div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="card sticky-top">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Course Progress</h6>
+                                        <div class="progress mb-3" style="height: 25px;">
+                                            <div id="courseProgressBar" class="progress-bar bg-success"
+                                                role="progressbar" style="width: 0%"></div>
+                                        </div>
+                                        <p id="progressText" class="small text-muted mb-0">0 of 5 days completed</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="lessonContent" class="mt-4" style="display:none;"></div>
+                    </section>
+
+                    <!-- Quiz Section -->
+                    <section id="quiz-section" class="content-section" style="display:none;">
+                        <div id="quizList"></div>
+                        <div id="quizContainer" style="display:none;"></div>
+                    </section>
+
+                    <!-- Assignments Section -->
+                    <section id="assignments-section" class="content-section" style="display:none;">
+                        <div id="assignmentsList"></div>
+                        <div id="assignmentDetail" style="display:none;"></div>
+                    </section>
+
+                    <!-- Forum Section -->
+                    <section id="forum-section" class="content-section" style="display:none;">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div id="forumPosts"></div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Start a Discussion</h6>
+                                        <form id="forumForm">
+                                            <div class="mb-3">
+                                                <textarea class="form-control form-control-sm" id="forumText"
+                                                    placeholder="Share your thoughts..." rows="4" required></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-sm btn-primary w-100">Post</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Gamification Section -->
+                    <section id="gamification-section" class="content-section" style="display:none;">
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Your Badges</h6>
+                                        <div id="badgesList"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Level Progress</h6>
+                                        <div id="levelInfo"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Leaderboard</h6>
+                                <div id="leaderboard"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Profile Section -->
+                    <section id="profile-section" class="content-section" style="display:none;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Student Information</h5>
+                                        <div id="profileInfo"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Learning Statistics</h5>
+                                        <div id="statsInfo"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Badge Unlock Modal -->
+    <div class="modal fade" id="badgeModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="badge-popup mb-3">
+                        <i class="fas fa-star fa-3x text-warning"></i>
+                    </div>
+                    <h5 id="badgeTitle">Achievement Unlocked!</h5>
+                    <p id="badgeDesc" class="text-muted"></p>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Awesome!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/localStorage.js" defer></script>
+    <script src="js/gemini.js" defer></script>
+    <script src="js/course-content.js" defer></script>
+    <script src="js/quiz.js" defer></script>
+    <script src="js/assignments.js" defer></script>
+    <script src="js/forum.js" defer></script>
+    <script src="js/gamification.js" defer></script>
+    <script i="debug-script" src="js/main.js" defer></script>
+</body>
+
+</html>
